@@ -1,0 +1,95 @@
+def xueyuanxitong():
+    print('请选择功能---------')
+    print('1.添加学员')
+    print('2.删除学员')
+    print('3.修改学员信息')
+    print('4.查询学员信息')
+    print('5.显示所有学员信息')
+    print('6.退出系统')
+    print('-'*20)
+# 添加学员信息的函数
+list1 = []
+def add_():
+    '''添加学员函数'''
+    new_name = input('请输入姓名:')
+    new_age = input('请输入年龄:')
+    new_id = input('请输入学号:')
+    new_tel = input('请输入电话:')
+    global list1
+    for i in list1:
+        if new_name == i['name']:
+            print('此用户已经存在,请重新输入')
+            return # 退出当前函数
+    dict1 = {}
+    dict1['name'] = new_name
+    dict1['age'] = new_age
+    dict1['id'] = new_id
+    dict1['tel'] = new_tel
+    list1.append(dict1)
+    print(list1)
+
+def del1():
+    '''删除学员'''
+    del_name = input('请输入您要删除学员的姓名:')
+    global list1
+    for i in list1:
+        if del_name == i['name']:
+            list1.remove(i)
+            break
+    else:
+        print('您输入的用户不存在请重新输入')
+    print(list1)
+
+def xiugai():
+    '''修改学员'''
+    xiugai1 = input('请输入您要修改学员的姓名:')
+    global list1
+    for i in list1:
+        if xiugai1 == i['name']:
+            i['tel'] = input('请输入您要修改的手机号:')
+            i['id'] = input('请输入您要修改的id:')
+            break
+    else:
+        print('您输入的用户不存在,请重新输入')
+    print(list1)
+def find1():
+    '''查询学员'''
+    find1_name = input('请输入您要查询学员的姓名:')
+    global list1
+    for i in list1:
+        if find1_name == i['name']:
+            print(list1)
+            break
+    else:
+        print('您输入的用户不存在请重新输入:')
+
+def xianshi():
+    '''显示所有学员'''
+    global list1
+    print(list1)
+
+
+
+while True:
+    xueyuanxitong()
+    num1 =int(input('请输入功能序号:'))
+    if num1 == 1:
+        #print('请添加学员')
+        add_()
+    elif num1 == 2:
+        del1()
+        #  print('删除学员')
+    elif num1 == 3:
+        xiugai()
+       # print('修改学员信息')
+    elif num1 == 4:
+        find1()
+        #print('查询学员')
+    elif num1 == 5:
+        xianshi()
+       # print('显示所有学员信息')
+    elif num1 == 6:
+        print('退出系统')
+        break
+    else:
+        print('输入错误,请重新输入')
